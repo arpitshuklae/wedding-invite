@@ -30,12 +30,27 @@ export function OpenEnvelope({
         transform: "none",
       }}
     >
-      <span className="env-scene" aria-hidden="true">
+      <span
+        className="env-scene"
+        aria-hidden="true"
+        style={{ position: "absolute", inset: 0, zIndex: 1, overflow: "hidden" }}
+      >
         <img
           className="env-scene-img"
           src="/images/lakeside-villa.jpg"
           alt=""
           draggable={false}
+          style={{
+            display: "block",
+            position: "absolute",
+            left: "-8%",
+            top: "-28%",
+            width: "130%",
+            height: "130%",
+            maxWidth: "none",
+            objectFit: "cover",
+            objectPosition: "42% 48%",
+          }}
         />
       </span>
       <span className="env-body" aria-hidden="true" />
