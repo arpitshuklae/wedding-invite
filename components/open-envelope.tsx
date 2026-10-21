@@ -39,10 +39,18 @@ export function OpenEnvelope({
         />
       </span>
       <span className="env-body" aria-hidden="true" />
-      <span className="env-collar env-collar-right" aria-hidden="true">
+      <span
+        className="env-collar env-collar-right"
+        aria-hidden="true"
+        suppressHydrationWarning
+      >
         <span className="env-sheet" />
       </span>
-      <span className="env-collar env-collar-left" aria-hidden="true">
+      <span
+        className="env-collar env-collar-left"
+        aria-hidden="true"
+        suppressHydrationWarning
+      >
         <span className="env-sheet" />
       </span>
       <span className="env-seal-shade" aria-hidden="true" />

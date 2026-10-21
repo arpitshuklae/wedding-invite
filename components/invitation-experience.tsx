@@ -58,7 +58,7 @@ export function InvitationExperience() {
 
   useEffect(() => {
     if (envelope !== "sliding" || capturing) return;
-    const id = window.setTimeout(() => setEnvelope("open"), 1100);
+    const id = window.setTimeout(() => setEnvelope("open"), 1200);
     return () => window.clearTimeout(id);
   }, [capturing, envelope]);
 
