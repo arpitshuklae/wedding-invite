@@ -170,13 +170,6 @@ export function InviteCard() {
         <p className="love-line">
           With love, {wedding.groom} &amp; {wedding.bride}
         </p>
-        <p className="credit-line">
-          Photo of Hallstatt by{" "}
-          <a href={wedding.unsplashCredit.href} target="_blank" rel="noreferrer">
-            {wedding.unsplashCredit.label}
-          </a>{" "}
-          on Unsplash
-        </p>
       </section>
     </div>
   );

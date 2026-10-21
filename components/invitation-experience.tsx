@@ -62,30 +62,32 @@ export function InvitationExperience() {
     return () => window.clearTimeout(id);
   }, [capturing, envelope]);
 
-  const canScroll = envelope === "open" && revealed;
+  const canScroll = envelope === "open";
 
   useEffect(() => {
-    const frame = frameRef.current;
-    if (!frame || canScroll) return;
-    const keep = () => {
-      frame.scrollTop = 0;
-    };
-    keep();
-    frame.addEventListener("scroll", keep, { passive: true });
-    return () => frame.removeEventListener("scroll", keep);
+    const html = document.documentElement;
+    const body = document.body;
+    if (canScroll) {
+      html.classList.add("invite-ready");
+      html.classList.remove("h-full");
+      html.style.setProperty("overflow", "auto", "important");
+      html.style.setProperty("height", "auto", "important");
+      html.style.setProperty("max-height", "none", "important");
+      body.classList.add("invite-ready");
+      body.style.setProperty("overflow", "auto", "important");
+      body.style.setProperty("height", "auto", "important");
+      body.style.setProperty("max-height", "none", "important");
+    }
   }, [canScroll]);
 
   useEffect(() => {
     if (!canScroll) return;
     const id = VIEW_TARGETS[view];
     if (!id) return;
-    const frame = frameRef.current;
     const target = document.getElementById(id);
-    if (!frame || !target) return;
+    if (!target) return;
     const jump = () => {
-      const top =
-        target.getBoundingClientRect().top - frame.getBoundingClientRect().top + frame.scrollTop;
-      frame.scrollTop = top;
+      target.scrollIntoView({ block: "start" });
     };
     jump();
     const t = window.setTimeout(jump, 80);
@@ -100,6 +102,7 @@ export function InvitationExperience() {
           data-locked={canScroll ? "false" : "true"}
           data-view={view || "cover"}
           data-envelope={envelope}
+          data-scratched={revealed ? "true" : "false"}
           className="invite-frame"
           aria-label="Wedding invitation for Kartik and Srashti"
         >

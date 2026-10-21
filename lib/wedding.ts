@@ -15,10 +15,6 @@ export const wedding = {
     "https://www.google.com/maps/search/?api=1&query=Vrindavan%20Garden%20Bhopal",
   mapsEmbed:
     "https://maps.google.com/maps?q=Vrindavan%20Garden%20Bhopal&output=embed",
-  unsplashCredit: {
-    label: "Daniel Koponyas",
-    href: "https://unsplash.com/@danielk",
-  },
   events: [
     {
       id: "haldi",

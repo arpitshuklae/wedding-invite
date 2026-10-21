@@ -1,17 +1,18 @@
 html,
 body {
-  height: 100%;
-  overflow: hidden;
-  overscroll-behavior: none;
+  min-height: 100%;
+  height: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: auto;
   touch-action: manipulation;
+  -webkit-overflow-scrolling: touch;
 }
 
 .invite-shell {
   min-height: 100svh;
   min-height: 100dvh;
-  min-height: -webkit-fill-available;
-  display: grid;
-  place-items: center;
+  display: block;
   background: #8fa8c4;
   touch-action: manipulation;
 }
@@ -25,39 +26,26 @@ body {
   position: relative;
   width: 100%;
   max-width: 430px;
-  height: 100svh;
-  height: 100dvh;
-  height: -webkit-fill-available;
-  overflow: hidden;
+  min-height: 100svh;
+  min-height: 100dvh;
+  height: auto;
+  margin: 0 auto;
+  overflow: visible;
   background: var(--page);
   isolation: isolate;
-  container-type: size;
   touch-action: manipulation;
 }
 
 .invite-frame {
   position: relative;
   width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
+  height: auto;
+  overflow: visible;
   background: var(--page);
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior: none;
-}
-
-.invite-frame::-webkit-scrollbar {
-  display: none;
-}
-
-.invite-frame[data-locked="true"] {
-  overflow: hidden;
 }
 
 @media (min-width: 768px) {
   .invite-phone {
-    height: min(100dvh, 844px);
     width: min(430px, calc(100dvh * 0.46));
     border-radius: 1.55rem;
     box-shadow: 0 28px 80px rgba(24, 40, 70, 0.35);
@@ -67,8 +55,8 @@ body {
 .paper-envelope {
   --paper: #f6f0e4;
   --paper-lit: #fbf7ef;
-  --peak: 60%;
-  --mouth: 36%;
+  --peak: 62%;
+  --mouth: 46%;
   --grain: url("/images/paper-grain.svg");
   position: fixed;
   inset: 0;
@@ -110,43 +98,31 @@ body {
 .paper-envelope[hidden],
 .paper-envelope[data-state="open"] {
   display: none !important;
+  pointer-events: none !important;
+  visibility: hidden;
+  z-index: -1;
 }
 
-.env-letter {
+.env-scene {
   position: absolute;
-  inset: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: var(--mouth);
   z-index: 1;
   overflow: hidden;
-  background: #6d9fbf;
   pointer-events: none;
+  background: #d7e6f2;
 }
 
-.env-letter img {
+.env-scene-img {
   display: block;
-  max-width: none;
-  pointer-events: none;
-  user-select: none;
-}
-
-.env-letter-water {
-  position: absolute;
-  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 86%;
-}
-
-.env-letter-scene {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 72%;
-  object-fit: fill;
-  object-position: center top;
-  mask-image: linear-gradient(#000 78%, transparent);
-  -webkit-mask-image: linear-gradient(#000 78%, transparent);
+  object-position: center 42%;
+  pointer-events: none;
+  user-select: none;
 }
 
 .env-body,
@@ -195,12 +171,12 @@ body {
 
 .env-collar-left .env-sheet {
   clip-path: polygon(0% var(--mouth), 51.4% var(--peak), 0% 100%);
-  filter: drop-shadow(7px 5px 6px rgba(92, 72, 48, 0.13));
+  filter: drop-shadow(8px 7px 8px rgba(92, 72, 48, 0.2));
 }
 
 .env-collar-right .env-sheet {
   clip-path: polygon(100% var(--mouth), 48.6% var(--peak), 100% 100%);
-  filter: drop-shadow(-7px 5px 6px rgba(92, 72, 48, 0.13));
+  filter: drop-shadow(-8px 7px 8px rgba(92, 72, 48, 0.2));
 }
 
 .env-sheet {
@@ -332,9 +308,16 @@ body {
 
 .cover-hero {
   position: relative;
-  min-height: 100cqh;
+  min-height: 100svh;
+  min-height: 100dvh;
   overflow: hidden;
   background: #f4ead8;
+}
+
+@media (min-width: 768px) {
+  .cover-hero {
+    min-height: min(100dvh, 844px);
+  }
 }
 
 .cover-art {
@@ -504,12 +487,12 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 2.1rem 1.45rem 1.6rem;
+  padding: 1.25rem 1.45rem 1.05rem;
 }
 
 .fam-page {
-  min-height: 100cqh;
-  padding-top: 2.4rem;
+  min-height: 0;
+  padding-top: 1.55rem;
 }
 
 .ganesha-wrap {
@@ -593,19 +576,19 @@ body {
 }
 
 .ks-mark-foot {
-  margin-top: auto;
-  padding-top: 1.6rem;
+  margin-top: 1.35rem;
+  padding-top: 0;
 }
 
 .bride-page {
-  min-height: 52%;
-  padding-top: 3.2rem;
-  padding-bottom: 1.2rem;
+  min-height: 0;
+  padding-top: 0.15rem;
+  padding-bottom: 0.85rem;
 }
 
 .story-page {
-  padding-top: 0.4rem;
-  padding-bottom: 1.8rem;
+  padding-top: 0.15rem;
+  padding-bottom: 1.05rem;
 }
 
 .story-lede {
@@ -701,12 +684,12 @@ body {
 }
 
 .schedule-head {
-  min-height: 32%;
-  justify-content: flex-end;
-  padding-bottom: 1.7rem;
+  min-height: 0;
+  justify-content: flex-start;
+  padding-top: 0.7rem;
+  padding-bottom: 0.55rem;
   background:
     linear-gradient(180deg, transparent 0%, #eef3fa 28%, #f4f7fb 100%);
-  mask-image: linear-gradient(#000 0 86%, transparent);
 }
 
 .day-banner {
@@ -719,13 +702,13 @@ body {
 }
 
 .event-sheet {
-  margin: 0 0.85rem 1.15rem;
-  padding: 1.25rem 1.1rem 1.25rem;
-  min-height: calc(100cqh - 1.6rem);
+  margin: 0 0.85rem 1rem;
+  padding: 1.1rem 1.1rem 1.15rem;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   text-align: center;
   background: var(--cream);
   border-radius: 1.7rem;
@@ -753,10 +736,10 @@ body {
 
 .event-art {
   position: relative;
-  width: min(90%, 20.5rem);
+  width: min(86%, 18.5rem);
   aspect-ratio: 0.95;
   flex: 0 0 auto;
-  margin: 0.35rem 0 0.1rem;
+  margin: 0.4rem 0 0.1rem;
   overflow: hidden;
   border: 1.5px solid #c4a35a;
   border-radius: 50% 50% 0.9rem 0.9rem / 38% 38% 0.9rem 0.9rem;
@@ -822,8 +805,9 @@ body {
 }
 
 .count-page {
-  min-height: 38%;
-  padding-top: 1.8rem;
+  min-height: 0;
+  padding-top: 1.05rem;
+  padding-bottom: 1.05rem;
 }
 
 .count-grid {
@@ -869,8 +853,8 @@ body {
 }
 
 .rsvp-sheet {
-  min-height: 100cqh;
-  padding: 1.7rem 1.15rem 1.8rem;
+  min-height: 0;
+  padding: 1.35rem 1.15rem 1.5rem;
   background: var(--cream);
   border-radius: 2.2rem 2.2rem 0 0;
   box-shadow: 0 -12px 32px rgba(40, 55, 90, 0.06);
@@ -978,8 +962,8 @@ body {
 }
 
 .venue-page {
-  min-height: 72%;
-  padding: 2.6rem 1.4rem 2.4rem;
+  min-height: 0;
+  padding: 1.5rem 1.4rem 2.2rem;
 }
 
 .venue-title {

@@ -15,15 +15,9 @@ export function OpenEnvelope({
       aria-label="Open the envelope"
       suppressHydrationWarning
     >
-      <span className="env-letter" aria-hidden="true">
+      <span className="env-scene" aria-hidden="true">
         <img
-          className="env-letter-water"
-          src="/images/lakeside-villa.jpg"
-          alt=""
-          draggable={false}
-        />
-        <img
-          className="env-letter-scene"
+          className="env-scene-img"
           src="/images/lakeside-villa.jpg"
           alt=""
           draggable={false}

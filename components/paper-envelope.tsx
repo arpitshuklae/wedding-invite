@@ -84,21 +84,6 @@ export function PaperEnvelope({
         }
       }}
     >
-      <div className="env-letter" aria-hidden="true">
-        <img
-          className="env-letter-water"
-          src="/images/lakeside-villa.jpg"
-          alt=""
-          draggable={false}
-        />
-        <img
-          className="env-letter-scene"
-          src="/images/lakeside-villa.jpg"
-          alt=""
-          draggable={false}
-        />
-      </div>
-
       <div className="env-body" aria-hidden="true" />
 
       <div className="env-collar env-collar-right" aria-hidden="true">
