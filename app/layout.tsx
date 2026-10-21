@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import Script from "next/script";
 import { Allura, Cinzel, Cormorant_Garamond, Great_Vibes } from "next/font/google";
 import "./globals.css";
 
@@ -50,9 +49,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full bg-[#8fa8c4] text-[#1d3557]">
         <style dangerouslySetInnerHTML={{ __html: ENVELOPE_CSS }} />
-        <Script id="envelope-boot" strategy="beforeInteractive">
-          {ENVELOPE_JS}
-        </Script>
+        <script dangerouslySetInnerHTML={{ __html: ENVELOPE_JS }} />
         {children}
       </body>
     </html>
