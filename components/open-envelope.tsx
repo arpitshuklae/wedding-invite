@@ -14,6 +14,21 @@ export function OpenEnvelope({
       data-capture={capture ? "slid" : undefined}
       aria-label="Open the envelope"
       suppressHydrationWarning
+      style={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 80,
+        width: "100%",
+        height: "100%",
+        margin: 0,
+        padding: 0,
+        border: 0,
+        display: "block",
+        overflow: "hidden",
+        background: "#f6f0e4",
+        cursor: "pointer",
+        transform: "none",
+      }}
     >
       <span className="env-scene" aria-hidden="true">
         <img

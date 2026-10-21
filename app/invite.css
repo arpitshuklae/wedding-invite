@@ -158,7 +158,10 @@ body {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  transition: transform 1.4s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: transform;
+  transition:
+    transform 1s cubic-bezier(0.23, 1, 0.32, 1),
+    translate 1s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .env-collar-right {
@@ -287,23 +290,19 @@ body {
 }
 
 .paper-envelope[data-state="sliding"] .env-collar-left {
-  transform: translate3d(-6%, 0, 0);
+  transform: translateX(-18%) !important;
+  translate: -18% 0 !important;
 }
 
 .paper-envelope[data-state="sliding"] .env-collar-right {
-  transform: translate3d(6%, 0, 0);
+  transform: translateX(18%) !important;
+  translate: 18% 0 !important;
 }
 
 .paper-envelope[data-capture="slid"] .env-collar-left,
 .paper-envelope[data-capture="slid"] .env-collar-right {
   transition: none;
   animation: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .env-collar {
-    transition: none !important;
-  }
 }
 
 .cover-hero {
